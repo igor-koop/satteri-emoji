@@ -1,6 +1,6 @@
 # satteri-emoji
 
-[![npm](https://img.shields.io/npm/v/satteri-emoji)](https://www.npmjs.com/package/satteri-emoji) [![License](https://img.shields.io/github/license/igor-koop/satteri-emoji)](https://github.com/igor-koop/satteri-emoji/blob/main/LICENSE) [![Coverage](https://codecov.io/gh/igor-koop/satteri-emoji/graph/badge.svg)](https://codecov.io/gh/igor-koop/satteri-emoji) [![Lint](https://img.shields.io/badge/lint-oxlint-ea580c)](https://oxc.rs/docs/guide/usage/linter) [![Types](https://img.shields.io/badge/types-TypeScript-3178c6)](https://www.typescriptlang.org/) [![CI](https://github.com/igor-koop/satteri-emoji/actions/workflows/ci.yml/badge.svg)](https://github.com/igor-koop/satteri-emoji/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/satteri-emoji)](https://www.npmjs.com/package/satteri-emoji) [![License](https://img.shields.io/github/license/igor-koop/satteri-emoji)](https://github.com/igor-koop/satteri-emoji/blob/main/LICENSE) [![Coverage](https://codecov.io/gh/igor-koop/satteri-emoji/graph/badge.svg)](https://codecov.io/gh/igor-koop/satteri-emoji) [![Lint](https://img.shields.io/badge/lint-oxlint-ea580c)](https://oxc.rs/docs/guide/usage/linter) [![Types](https://img.shields.io/badge/types-TypeScript-3178c6)](https://www.typescriptlang.org/) [![Actions](https://github.com/igor-koop/satteri-emoji/actions/workflows/actions.yml/badge.svg)](https://github.com/igor-koop/satteri-emoji/actions/workflows/actions.yml)
 
 Satteri plugin to replace emoji shortcodes and, optionally, ASCII emoticons in Markdown text.
 
