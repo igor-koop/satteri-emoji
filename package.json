@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "satteri-emoji",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "Satteri plugin to replace emoji shortcodes and emoticons in Markdown text.",
   "keywords": [

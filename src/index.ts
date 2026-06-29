@@ -287,7 +287,7 @@ function createMdxSpan(value: string, attributes: Record<string, string>) {
     name: "span",
     attributes: Object.entries(attributes).map(([name, value]) => ({
       type: "mdxJsxAttribute" as const,
-      name,
+      name: name === "class" ? "className" : name,
       value,
     })),
     data: { _mdxExplicitJsx: true },
