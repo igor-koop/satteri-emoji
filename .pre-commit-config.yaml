@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: detect-private-key
+      - id: detect-aws-credentials
+        args: ["--allow-missing-credentials"]
+
+  - repo: local
+    hooks:
+      - id: format
+        name: format (oxfmt)
+        entry: npm run fmt
+        language: system
+        pass_filenames: false
+        stages: [pre-commit, pre-push]
+
+      - id: lint
+        name: lint (oxlint)
+        entry: npm run check:lint
+        language: system
+        pass_filenames: false
+        stages: [pre-commit, pre-push]
+
+      - id: type
+        name: type (tsc)
+        entry: npm run check:type
+        language: system
+        pass_filenames: false
+        stages: [pre-commit, pre-push]
+
+      - id: test
+        name: test (vitest)
+        entry: npm test
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

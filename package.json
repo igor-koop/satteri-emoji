@@ -47,7 +47,6 @@
     "check:lint": "oxlint",
     "check:type": "tsc --noEmit",
     "fmt": "oxfmt",
-    "lint": "oxlint",
     "test": "vitest run",
     "cov": "vitest run --coverage"
   },

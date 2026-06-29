@@ -33,15 +33,15 @@ satteriEmoji({ shortcodes: ["github"] });
 
 ## Options
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `class` | `string` | `"emoji"` | CSS class on generated spans. Empty string omits the attribute. |
-| `emoticons` | `boolean` | `false` | Replace ASCII emoticons like `:-)` and `:D`. |
-| `hidden` | `boolean` | `false` | Add `aria-hidden="true"` to generated spans. |
-| `label` | `boolean` | `true` | Add `role="img"` and `aria-label` to generated spans. |
-| `locale` | `Locale` | `"en"` | Locale for accessible labels. |
-| `override` | `Record<string, Override>` | — | Direct shortcode replacements; take precedence over all datasets. |
-| `shortcodes` | `Catalog[]` | `["cldr"]` | Shortcode datasets to enable. |
+| Option       | Type                       | Default    | Description                                                       |
+| ------------ | -------------------------- | ---------- | ----------------------------------------------------------------- |
+| `class`      | `string`                   | `"emoji"`  | CSS class on generated spans. Empty string omits the attribute.   |
+| `emoticons`  | `boolean`                  | `false`    | Replace ASCII emoticons like `:-)` and `:D`.                      |
+| `hidden`     | `boolean`                  | `false`    | Add `aria-hidden="true"` to generated spans.                      |
+| `label`      | `boolean`                  | `true`     | Add `role="img"` and `aria-label` to generated spans.             |
+| `locale`     | `Locale`                   | `"en"`     | Locale for accessible labels.                                     |
+| `override`   | `Record<string, Override>` | —          | Direct shortcode replacements; take precedence over all datasets. |
+| `shortcodes` | `Catalog[]`                | `["cldr"]` | Shortcode datasets to enable.                                     |
 
 Built-in datasets: `cldr`, `cldr-native`, `emojibase`, `emojibase-legacy`, `github`, `iamcal`, `joypixels`.
 
@@ -57,14 +57,14 @@ cd satteri-emoji
 npm install
 ```
 
-| Script | Description |
-|---|---|
-| `npm run data` | Regenerate the emoji registry from `emojibase-data`. |
-| `npm run build` | Compile ESM and type declarations into `dist/`. |
-| `npm test` | Run the Vitest test suite. |
-| `npm run cov` | Run tests with V8 coverage. |
-| `npm run check` | Format check, lint, and TypeScript typecheck. |
-| `npm run fmt` | Auto-format with oxfmt. |
+| Script          | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `npm run data`  | Regenerate the emoji registry from `emojibase-data`. |
+| `npm run build` | Compile ESM and type declarations into `dist/`.      |
+| `npm test`      | Run the Vitest test suite.                           |
+| `npm run cov`   | Run tests with V8 coverage.                          |
+| `npm run check` | Format check, lint, and TypeScript typecheck.        |
+| `npm run fmt`   | Auto-format with oxfmt.                              |
 
 The package pre-generates `src/registry.ts` from `emojibase-data` so that runtime work is limited to a few lookups per plugin call rather than parsing the full Emojibase JSON on each page.
 
