@@ -54,17 +54,20 @@ Built-in locales: `bn`, `da`, `de`, `en`, `en-gb`, `es`, `es-mx`, `et`, `fi`, `f
 ```sh
 git clone https://github.com/igor-koop/satteri-emoji
 cd satteri-emoji
-npm install
+mise install
+pnpm install
+hk install --mise
 ```
 
-| Script          | Description                                          |
-| --------------- | ---------------------------------------------------- |
-| `npm run data`  | Regenerate the emoji registry from `emojibase-data`. |
-| `npm run build` | Compile ESM and type declarations into `dist/`.      |
-| `npm test`      | Run the Vitest test suite.                           |
-| `npm run cov`   | Run tests with V8 coverage.                          |
-| `npm run check` | Format check, lint, and TypeScript typecheck.        |
-| `npm run fmt`   | Auto-format with oxfmt.                              |
+| Command                   | Description                                                         |
+| ------------------------- | ------------------------------------------------------------------- |
+| `pnpm build`              | Compile ESM and type declarations into `dist/`.                     |
+| `pnpm test`               | Run the Vitest test suite.                                          |
+| `pnpm cov`                | Run tests with V8 coverage.                                         |
+| `hk check --all`          | Run every check (format, lint, types, spelling, leaks).             |
+| `hk fix --all`            | Apply every available fix (formatting, whitespace, lint autofixes). |
+| `mise run data`           | Regenerate `src/registry.ts` from `emojibase-data`.                 |
+| `mise run release <bump>` | Bump version, push the tag, create the GitHub release.              |
 
 The package pre-generates `src/registry.ts` from `emojibase-data` so that runtime work is limited to a few lookups per plugin call rather than parsing the full Emojibase JSON on each page.
 

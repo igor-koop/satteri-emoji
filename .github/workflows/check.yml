@@ -1,0 +1,24 @@
+name: Check
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  hk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up mise
+        uses: jdx/mise-action@v4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run checks
+        run: hk check --all --skip-step test

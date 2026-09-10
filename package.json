@@ -19,14 +19,8 @@
     "url": "https://github.com/igor-koop/satteri-emoji.git"
   },
   "files": [
-    "dist/index.d.ts",
-    "dist/index.d.ts.map",
-    "dist/index.js",
-    "dist/index.js.map",
-    "dist/registry.d.ts",
-    "dist/registry.d.ts.map",
-    "dist/registry.js",
-    "dist/registry.js.map"
+    "dist/*.d.ts",
+    "dist/*.js"
   ],
   "type": "module",
   "sideEffects": false,
@@ -40,15 +34,8 @@
     }
   },
   "scripts": {
-    "data": "node data.ts",
     "build": "tsc --project tsconfig.build.json",
-    "check": "oxfmt --check && oxlint && tsc --noEmit",
-    "check:fmt": "oxfmt --check",
-    "check:lint": "oxlint",
-    "check:type": "tsc --noEmit",
-    "fmt": "oxfmt",
     "test": "vitest run",
-    "test:satteri": "sh -c 'npm i --silent --no-save satteri@$1 && vitest run && tsc --noEmit; r=$?; npm i --silent; exit $r' --",
     "cov": "vitest run --coverage"
   },
   "devDependencies": {
@@ -72,6 +59,6 @@
     "satteri": ">=0.7.0 <0.11.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

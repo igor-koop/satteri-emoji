@@ -1,0 +1,89 @@
+amends "package://github.com/jdx/hk/releases/download/v1.57.0/hk@1.57.0#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v1.57.0/hk@1.57.0#/Builtins.pkl"
+
+local checks = new Mapping<String, Step> {
+  ["scan:repo"] {
+    glob = List("**/*")
+    exclude = List("src/registry.ts", "pnpm-lock.yaml")
+    check =
+      #"""
+        hk util check-merge-conflict --assume-in-merge {{files}}
+        hk util check-added-large-files {{files}}
+        hk util check-symlinks {{files}}
+        hk util check-case-conflict {{files}}
+      """#
+  }
+  ["scan:format"] {
+    types = List("text")
+    exclude = List("src/registry.ts", "pnpm-lock.yaml")
+    check =
+      #"""
+        hk util trailing-whitespace --diff {{files}}
+        hk util end-of-file-fixer --diff {{files}}
+        hk util fix-smart-quotes --diff {{files}}
+        hk util mixed-line-ending --diff {{files}}
+      """#
+    fix =
+      #"""
+        hk util trailing-whitespace --fix {{files}}
+        hk util end-of-file-fixer --fix {{files}}
+        hk util fix-smart-quotes {{files}}
+        hk util mixed-line-ending --fix {{files}}
+      """#
+  }
+  ["scan:spelling"] = (Builtins.typos) {
+    exclude = List("src/registry.ts", "pnpm-lock.yaml")
+  }
+  ["scan:leaks"] {
+    types = List("text")
+    exclude = List("src/registry.ts", "pnpm-lock.yaml")
+    check = "betterleaks dir --redact --verbose --no-banner --log-level warn {{files}}"
+  }
+  ["check:pkl"] = (Builtins.pkl_format) {
+    depends = List("scan:format")
+  }
+  ["check:format"] = (Builtins.oxfmt) {
+    depends = List("scan:format")
+  }
+  ["check:lint"] = (Builtins.ox_lint) {
+    depends = List("check:format")
+  }
+  ["check:type"] = (Builtins.tsc) {
+    depends = List("check:format")
+  }
+  ["check:workflows"] = (Builtins.actionlint) {
+    depends = List("check:format")
+  }
+}
+
+local tests = (checks) {
+  ["test"] {
+    check = "pnpm cov"
+  }
+}
+
+local commits = new Mapping<String, Step> {
+  ["commit:convention"] = Builtins.check_conventional_commit
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps = checks
+  }
+  ["pre-push"] {
+    steps = tests
+  }
+  ["commit-msg"] {
+    steps = commits
+  }
+  ["check"] {
+    steps = tests
+  }
+  ["fix"] {
+    fix = true
+    steps = checks
+  }
+}
