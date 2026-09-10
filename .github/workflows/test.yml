@@ -8,51 +8,53 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   vitest:
+    name: vitest (satteri ${{ matrix.satteri }})
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        satteri: ["0.7", "0.8", "0.9", "0.10"]
+        satteri: [lockfile, "0.7"]
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up mise
+        uses: jdx/mise-action@v4
         with:
-          node-version: 24
-          cache: npm
+          install_args: node pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Install satteri ${{ matrix.satteri }}
-        run: npm i --no-save satteri@${{ matrix.satteri }}
+        if: matrix.satteri != 'lockfile'
+        run: pnpm add -D satteri@${{ matrix.satteri }}
 
-      - name: Type check against satteri ${{ matrix.satteri }}
-        run: npm run check:type
+      - name: Type check
+        run: pnpm exec tsc --noEmit
 
       - name: Run tests with coverage
-        run: npm run cov
+        run: pnpm cov
 
       - name: Upload test results to Codecov
-        if: matrix.satteri == '0.10'
-        uses: codecov/test-results-action@v1
+        if: ${{ !cancelled() && matrix.satteri == 'lockfile' }}
+        uses: codecov/codecov-action@v7
         with:
           fail_ci_if_error: true
           files: ./junit.xml
+          report_type: test_results
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload coverage to Codecov
-        if: matrix.satteri == '0.10'
-        uses: codecov/codecov-action@v5
+        if: matrix.satteri == 'lockfile'
+        uses: codecov/codecov-action@v7
         with:
           fail_ci_if_error: true
           files: ./coverage/lcov.info

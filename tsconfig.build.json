@@ -2,7 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig.json",
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "declarationMap": false,
+    "sourceMap": false
   },
   "include": ["src/index.ts"]
 }

@@ -1,0 +1,33 @@
+[settings]
+lockfile = true
+task.run_auto_install = false
+
+[tools]
+node = "24.19.0"
+pnpm = "11.22.0"
+hk = "1.57.0"
+pkl = "0.32.1"
+typos = "1.49.0"
+betterleaks = "1.7.4"
+actionlint = "1.7.12"
+
+[env]
+_.path = ["{{config_root}}/node_modules/.bin"]
+
+[tasks.data]
+description = "Regenerate src/registry.ts from emojibase-data"
+run = """
+node data.ts
+oxfmt src/registry.ts
+"""
+
+[tasks.release]
+description = "Bump version, tag, push, and create the GitHub release"
+tools = { gh = "2.100.0" }
+usage = 'arg "<bump>" help="patch | minor | major" { choices "patch" "minor" "major" }'
+raw = true
+run = """
+tag=$(npm version "$usage_bump" -m "chore: release v%s")
+git push --follow-tags
+gh release create "$tag" --verify-tag
+"""
