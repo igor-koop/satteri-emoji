@@ -11,6 +11,7 @@ pkl = "0.32.1"
 typos = "1.49.0"
 betterleaks = "1.7.4"
 actionlint = "1.7.12"
+pinact = "4.1.1"
 
 [env]
 _.path = ["{{config_root}}/node_modules/.bin"]
