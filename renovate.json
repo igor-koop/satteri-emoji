@@ -1,4 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"]
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchPackageNames": ["!satteri", "!emojibase", "!emojibase-data"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["satteri"],
+      "matchUpdateTypes": ["patch"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["emojibase", "emojibase-data"],
+      "groupName": "emojibase"
+    }
+  ]
 }
