@@ -37,9 +37,6 @@ jobs:
         if: matrix.satteri != 'lockfile'
         run: pnpm add -D satteri@${{ matrix.satteri }}
 
-      - name: Type check
-        run: pnpm exec tsc --noEmit
-
       - name: Run tests with coverage
         run: pnpm cov
 

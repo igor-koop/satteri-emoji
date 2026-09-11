@@ -23,7 +23,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Regenerate registry
-        run: mise run data
+        run: mise run --force data
 
       - name: Detect stale registry
         run: git diff --exit-code src/registry.ts

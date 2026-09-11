@@ -59,15 +59,14 @@ pnpm install
 hk install --mise
 ```
 
-| Command                   | Description                                                         |
-| ------------------------- | ------------------------------------------------------------------- |
-| `pnpm build`              | Compile ESM and type declarations into `dist/`.                     |
-| `pnpm test`               | Run the Vitest test suite.                                          |
-| `pnpm cov`                | Run tests with V8 coverage.                                         |
-| `hk check --all`          | Run every check (format, lint, types, spelling, leaks).             |
-| `hk fix --all`            | Apply every available fix (formatting, whitespace, lint autofixes). |
-| `mise run data`           | Regenerate `src/registry.ts` from `emojibase-data`.                 |
-| `mise run release <bump>` | Bump version, push the tag, create the GitHub release.              |
+| Command          | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| `pnpm build`     | Compile ESM and type declarations into `dist/`.                     |
+| `pnpm test`      | Run the Vitest test suite.                                          |
+| `pnpm cov`       | Run tests with V8 coverage.                                         |
+| `hk check --all` | Run every check (format, lint, types, spelling, leaks).             |
+| `hk fix --all`   | Apply every available fix (formatting, whitespace, lint autofixes). |
+| `mise run data`  | Regenerate `src/registry.ts` from `emojibase-data`.                 |
 
 The package pre-generates `src/registry.ts` from `emojibase-data` so that runtime work is limited to a few lookups per plugin call rather than parsing the full Emojibase JSON on each page.
 
