@@ -52,8 +52,19 @@ local checks = new Mapping<String, Step> {
   ["check:type"] = (Builtins.tsc) {
     depends = List("check:format")
   }
-  ["check:workflows"] = (Builtins.actionlint) {
+  ["check:workflows"] {
+    glob = List(".github/workflows/*.yml", ".github/workflows/*.yaml")
     depends = List("check:format")
+    check =
+      #"""
+        actionlint {{files}}
+        pinact run --verify-comment --check {{files}}
+      """#
+    fix =
+      #"""
+        pinact run --verify-comment {{files}}
+        actionlint {{files}}
+      """#
   }
 }
 
@@ -64,7 +75,7 @@ local tests = (checks) {
 }
 
 local commits = new Mapping<String, Step> {
-  ["commit:convention"] = Builtins.check_conventional_commit
+  ["commit"] = Builtins.check_conventional_commit
 }
 
 hooks {
