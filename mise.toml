@@ -5,7 +5,7 @@ task.source_freshness_hash_contents = true
 
 [tools]
 node = "24.19.0"
-pnpm = "11.22.0"
+pnpm = "12.3.4"
 hk = "1.57.0"
 pkl = "0.32.1"
 typos = "1.49.0"
