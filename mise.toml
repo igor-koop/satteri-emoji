@@ -5,13 +5,13 @@ task.source_freshness_hash_contents = true
 
 [tools]
 node = "24.21.0"
-pnpm = "12.3.4"
-hk = "1.58.1"
+pnpm = "12.5.1"
+hk = "2.0.1"
 pkl = "0.32.1"
-typos = "1.50.1"
+typos = "1.50.2"
 betterleaks = "v1.8.1"
 actionlint = "1.7.12"
-pinact = "4.1.1"
+pinact = "5.0.0"
 
 [env]
 _.path = ["{{config_root}}/node_modules/.bin"]
