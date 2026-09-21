@@ -10,7 +10,7 @@ pnpm = "12.5.1"
 hk = "2.0.1"
 pkl = "0.32.1"
 typos = "1.50.2"
-betterleaks = "v1.8.1"
+betterleaks = "1.8.1"
 actionlint = "1.7.12"
 pinact = "5.0.0"
 
