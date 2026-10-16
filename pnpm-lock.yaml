@@ -24,11 +24,11 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(vitest@5.0.0)
       emojibase:
-        specifier: ^17.0.0
-        version: 17.0.0
+        specifier: ^18.0.0
+        version: 18.0.0
       emojibase-data:
-        specifier: ^17.0.0
-        version: 17.0.0(emojibase@17.0.0)
+        specifier: ^18.0.0
+        version: 18.0.0(emojibase@18.0.0)
       oxfmt:
         specifier: ^0.67.0
         version: 0.67.0
@@ -705,14 +705,14 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  emojibase-data@17.0.0:
-    resolution: {integrity: sha512-Yvgb5AWoHViHV/gq1qr5ZAarcBip+B27/ZLRsUJkbgAEaLlZ/fof9g882LTpmEpyhBNEC0m2SEmItljHsTygjA==}
+  emojibase-data@18.0.0:
+    resolution: {integrity: sha512-TPPRRYv2zPd0jKI+pTpMquwWNZXYAsC3IVsCMeg2X8y8fEzKwOks4/5bz0YavF5r6d71aGPpb6oDnUEwSLLMoA==}
     peerDependencies:
       emojibase: '*'
 
-  emojibase@17.0.0:
-    resolution: {integrity: sha512-bXdpf4HPY3p41zK5swVKZdC/VynsMZ4LoLxdYDE+GucqkFwzcM1GVc4ODfYAlwoKaf2U2oNNUoOO78N96ovpBA==}
-    engines: {node: '>=18.12.0'}
+  emojibase@18.0.0:
+    resolution: {integrity: sha512-5PG+EEt5zQ9qvqdHZw61+T9iz96g+r621QS/w8jEzPg+3mjzAdjl8LPLc+e9ABv/yboNfMwEair7aK9qKnwAbQ==}
+    engines: {node: '>=20.0.0'}
 
   es-module-lexer@2.3.2:
     resolution: {integrity: sha512-poHGpORABojJJucnV9KbOavETW8lBVnphkW77ER5/BQ5Fz7oXSoCNek7IH3vR5nRjdsEz926ibFYX8KtLQmdyw==}
@@ -1421,11 +1421,11 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  emojibase-data@17.0.0(emojibase@17.0.0):
+  emojibase-data@18.0.0(emojibase@18.0.0):
     dependencies:
-      emojibase: 17.0.0
+      emojibase: 18.0.0
 
-  emojibase@17.0.0: {}
+  emojibase@18.0.0: {}
 
   es-module-lexer@2.3.2: {}
 
