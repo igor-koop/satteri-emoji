@@ -68,13 +68,13 @@ describe("satteriEmoji", () => {
 
   it("replaces multiple shortcodes in order", () => {
     expect(mdHtml(":waving_hand: :thumbs_up:")).toBe(
-      '<p><span class="emoji" role="img" aria-label="waving hand">👋</span> <span class="emoji" role="img" aria-label="thumbs up">👍️</span></p>\n',
+      '<p><span class="emoji" role="img" aria-label="waving hand">👋</span> <span class="emoji" role="img" aria-label="thumbs up">👍</span></p>\n',
     );
   });
 
   it("can use GitHub shortcodes", () => {
     expect(mdHtml("Hello :wave: :+1:", { shortcodes: ["github"] })).toBe(
-      '<p>Hello <span class="emoji" role="img" aria-label="waving hand">👋</span> <span class="emoji" role="img" aria-label="thumbs up">👍️</span></p>\n',
+      '<p>Hello <span class="emoji" role="img" aria-label="waving hand">👋</span> <span class="emoji" role="img" aria-label="thumbs up">👍</span></p>\n',
     );
   });
 
@@ -124,13 +124,13 @@ describe("satteriEmoji", () => {
 
   it("can add a CSS class to emoji spans in Markdown", () => {
     expect(mdHtml("Hello :thumbs_up: <3", { class: "icon" })).toBe(
-      '<p>Hello <span class="icon" role="img" aria-label="thumbs up">👍️</span> &lt;3</p>\n',
+      '<p>Hello <span class="icon" role="img" aria-label="thumbs up">👍</span> &lt;3</p>\n',
     );
   });
 
   it("can add a CSS class to emoji spans in MDX", () => {
     expect(mdxHtml("Hello :thumbs_up: friend", { class: "icon" })).toBe(
-      '<p>Hello <span class="icon" role="img" aria-label="thumbs up">👍️</span> friend</p>',
+      '<p>Hello <span class="icon" role="img" aria-label="thumbs up">👍</span> friend</p>',
     );
   });
 
@@ -188,7 +188,7 @@ describe("satteriEmoji", () => {
 
   it("prefers emoji shortcode replacements over overlapping emoticons", () => {
     expect(mdHtml("Hello :-1:", { emoticons: true, shortcodes: ["github"] })).toBe(
-      '<p>Hello <span class="emoji" role="img" aria-label="thumbs down">👎️</span></p>\n',
+      '<p>Hello <span class="emoji" role="img" aria-label="thumbs down">👎</span></p>\n',
     );
   });
 
@@ -200,7 +200,7 @@ describe("satteriEmoji", () => {
 
   it("preserves surrounding inline nodes", () => {
     expect(mdHtml("**Hello :waving_hand:** [friend :thumbs_up:](https://example.com)")).toBe(
-      '<p><strong>Hello <span class="emoji" role="img" aria-label="waving hand">👋</span></strong> <a href="https://example.com">friend <span class="emoji" role="img" aria-label="thumbs up">👍️</span></a></p>\n',
+      '<p><strong>Hello <span class="emoji" role="img" aria-label="waving hand">👋</span></strong> <a href="https://example.com">friend <span class="emoji" role="img" aria-label="thumbs up">👍</span></a></p>\n',
     );
   });
 });
